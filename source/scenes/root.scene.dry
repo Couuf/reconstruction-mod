@@ -72,8 +72,6 @@ Q.nah_s_disp = 0;
 Q.house_impeach_passed = 0;
 Q.house_impeachment_total = 0;
 Q.impeachment_unlocked = 0;
-Q.trial_score = 0;
-Q.verdict = 0;
 
 Q.impeach_month = 0;
 
