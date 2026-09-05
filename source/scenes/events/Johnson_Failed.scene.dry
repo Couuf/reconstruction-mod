@@ -165,8 +165,8 @@ Congress must now decide who will control Reconstruction: the federal government
 - @Johnson_plan: Maintain Johnson's Reconstruction plan
 
 @full_plan
-choose-if: radical_strength >= 35
-unavailable-subtitle: [? if radical_strength < 35: Most of our party don't support such radical ideas ?]
+choose-if: radical_strength >= 35 and verdict != 3
+unavailable-subtitle: [? if radical_strength < 35: Most of our party don't support such radical ideas ?] [? if verdict = 3: Our hands are tied by the courts finding secession legal. ?]
 on-arrival: {! 
 
     Q.Radical_plan = 1; 
@@ -194,6 +194,8 @@ The former Confederate states are divided into five military districts under Uni
 Across the South, however, resistance hardens. Secret societies recruit openly, and the Ku Klux Klan begins expanding its campaign of terror.
 
 @limited_plan
+choose-if: verdict != 3
+unavailable-subtitle: Our hands are tied by the courts finding secession legal.
 on-arrival: {!
 
     Q.Johnson_plan = 0; 
