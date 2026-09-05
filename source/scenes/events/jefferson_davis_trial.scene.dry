@@ -29,6 +29,7 @@ The day of Jefferson Davis' treason trial has arrived. The <span style="color: #
 
 @trial
 go-to: guilty if verdict = 1; innocent if verdict = 2; fuck if verdict = 3;
+
 placeholder text
 
 @guilty
