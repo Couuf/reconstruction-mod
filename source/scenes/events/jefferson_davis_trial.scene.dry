@@ -25,9 +25,10 @@ verdict = 3;
 
 The day of Jefferson Davis' treason trial has arrived. The <span style="color: #7A1F5C;">**Radicals**</span> are eager to see Davis face justice for the war, but <span style="color: #9D2933;">**Moderates**</span> and <span style="color: #B5651D;">**Conservatives**</span> are much less optimistic. Already incensed by the mere decision to attempt to try him, they worry that the consequences of an unfavorable verdict could be disastrous, perhaps even ruling that secession was legal, while even a favorable ruling, they argue, would unnecessarily raise tension and unrest in the South. We can do little now but hope that our efforts to reform the judiciary and suppress Southern redemption have borne fruit, or else there will be hell to pay.
 
-- @trial: We can only hope the court rules correctly...
+- @trial
 
 @trial
+title: We can only hope the court rules correctly...
 go-to: @guilty if verdict = 1; @innocent if verdict = 2; @fuck if verdict = 3;
 
 placeholder text
