@@ -3,7 +3,7 @@ subtitle: The Rebel Leader on Trial
 tags: event
 view-if: year = 1866 and month >= 11 and davis_trial = 1
 max-visits: 1
-on-arrival: {!
+on-arrival: {
 Q.trial_score = 0;
 // want to add a bunch of factors here but im just gonna do it off of judiciary reform for now
 if (judicial_reform >= 3) {
@@ -19,7 +19,7 @@ verdict = 2
 } else {
 verdict = 3
 }
-!}
+}
 
 = Jefferson Davis on Trial
 
