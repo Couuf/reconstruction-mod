@@ -1,18 +1,53 @@
 title: Jefferson Davis' Treason Trial
 subtitle: The Rebel Leader on Trial
 tags: event
-view-if: year = 1866 and month >= 10 and davis_trial = 1
+view-if: year = 1866 and month >= 11 and davis_trial = 1
 max-visits: 1
-  
+on-arrival: {!
+Q.trial_score = 0;
+// want to add a bunch of factors here but im just gonna do it off of judiciary reform for now
+if (judicial_reform >= 3) {
+Q.trial_score +=2;
+} else if (judicial_reform >= 2) {
+Q.trial_score +=1;
+}
+
+if Q.trial_score >= 2 {
+verdict = 1
+} else if { Q.trial_score = 1 {
+verdict = 2
+} else {
+verdict = 3
+}
+!}
 
 = Jefferson Davis on Trial
 
-The day of Jefferson Davis' treason trial has arrived. 
+The day of Jefferson Davis' treason trial has arrived. The <span style="color: #7A1F5C;">**Radicals**</span> are eager to see Davis face justice for the war, but <span style="color: #9D2933;">**Moderates**</span> and <span style="color: #B5651D;">**Conservatives**</span> are much less optimistic. Already incensed by the mere decision to attempt to try him, they worry that the consequences of an unfavorable verdict could be disastrous, perhaps even ruling that secession was legal, while even a favorable ruling, they argue, would unnecessarily raise tension and unrest in the South. We can do little now but hope that our efforts to reform the judiciary and suppress Southern redemption have borne fruit, or else there will be hell to pay.
 
-- @verdict: We can only hope the court rules correctly...
+- @trial: We can only hope the court rules correctly...
 
-@verdict
-on-arrival: radical_strength += 1; radical_dissent -= 2; moderate_strength -= 1; conservative_strength -= 2; conservative_dissent += 2; kkk_strength += 5; kkk_militancy += 0.1;
+@trial
+go-to: guilty if verdict = 1; innocent if verdict = 2; fuck if verdict = 3;
+placeholder text
 
-Congress votes to put Davis on trial. <span style="color: #7A1F5C;">**Radicals**</span> celebrate a stand for the Republic, while <span style="color: #9D2933;">**Moderates**</span> and <span style="color: #B5651D;">**Conservatives**</span> warn of the dangers: Southern resentment may explode, and a hostile court could even declare secession legal, threatening the legitimacy of Reconstruction.
+@guilty
+title: Jefferson Davis is found guilty of treason!
+on-arrival: radical_strength += 7; radical_dissent -= 10; moderate_dissent -= 3; conservative_strength -= 5; conservative_dissent +=3; dem_reform_strength +=10; kkk_strength *= 1.2; kkk_militancy += 0.2; whiteL_strength *= 1.2 if whiteL_formed; whiteL_militancy += 0.2 if whiteL_formed; freedmen_rep += 10
 
+It seems our efforts to reform the judiciary and delegitimize secession have been enough, and the court has both found secession to be illegal and Davis to be guilty of treason! <span style="color: #7A1F5C;">**Radicals**</span> are ecstatic and the <span style="color: #9D2933;">**Moderates**</span> seem to just be happy that it worked out, but <span style="color: #B5651D;">**Conservatives**</span> warn that we have only managed to inflame tensions and turn Davis into a martyr. Militant groups in the South are outraged by the verdict, and are using it as both recruitment fodder and a rallying cry against federal presence in Southern states. Regardless, this is a massive victory for both the federal government and our wider Reconstruction efforts, and it gives us a stronger standing dealing with the South from now on. Northern Democrats have also taken the ruling as a vindication of their stance that talk of redemption is a non-starter, and their influence in the party has grown significantly.
+
+@innocent
+title: Jefferson Davis is found not guilty!
+on-arrival: radical_strength -= 5; radical_dissent += 5; moderate_dissent += 7; conservative_strength += 7; conservative_dissent += 10; dem_bourbon_strength += 5; kkk_strength *= 1.5; kkk_militancy += 0.35; whiteL_strength *= 1.5 if whiteL_formed; whiteL_militancy += 0.35 if whiteL_formed; freedmen_rep =- 5
+
+In a massive blow to our efforts to uphold federal authority, the court has found Davis innocent, but fortunately has stopped short of declaring the South's secession to be legal. Though it could be much worse, the mood in the party is still grim. <span style="color: #9D2933;">**Moderates**</span> and <span style="color: #B5651D;">**Conservatives**</span> are fuming, seeing the whole endeavor as a waste of time and resources just to give the Redeemers more propaganda fuel. The ruling has also bolstered the strength of the paramilitaries operating in the South as they see it as a validation of their opposition to Reconstruction and federal authority. The vindication of the <span style="color: #B5651D;">**Conservatives**</span>' warnings has also increased their standing in the party after the <span style="color: #7A1F5C;">**Radical**</span> path has seemingly backfired.
+
+@fuck
+title: The court has ruled secession was legal.
+subtitle: **WE FUCKED UP**
+on-arrival: radical_strength -= 15; radical_dissent += 10; moderate_dissent += 15; conservative_strength += 15; conservative_dissent += 20; dem_bourbon_strength += 20; kkk_strength *= 2.5; kkk_militancy += 0.55; whiteL_strength *= 2.5 if whiteL_formed; whiteL_militancy += 0.55 if whiteL_formed; freedmen_rep =- 15
+
+The worst case scenario has come to pass. Our decision to put the rebel leader on trial has backfired in a spectacular fashion; not only has the court ruled that Davis is not guilty of treason, it has also found that secession itself was not illegal, essentially destroying both the legitimacy of the federal government and that of Reconstruction with the strike of a gavel. The party is apoplectic, particularly the <span style="color: #B5651D;">**Conservatives**</span> who warned about this exact possibility. The <span style="color: #7A1F5C;">**Radicals**</span> have been humiliated, and the balance of power within the party has markedly shifted. As for the wider political and legal consequences, our efforts to reintegrate the south are now severely limited. While the Union still won the war, and thus the South will remain a part of the country, our authority over the Southern states has been shattered. Across the South, paramilitary groups grow larger and more militant than ever as they're emboldened by a clear and decisive statement from the court: the South was right all along. The narrative of the Redeemers has been legally legitimized, and we are almost powerless to stop it. Our authority as both a party and as the federal government has been hugely diminished, and the proposals to oppose Johnson's reconstruction plan and instate military occupation of the South are now little more than fantasy. 
+
+// include an option to defy the ruling if radical strength is high enough
