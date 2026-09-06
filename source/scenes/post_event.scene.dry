@@ -759,17 +759,17 @@ if (Q.month_actions >= 1) {
 
     // BASELINE GROWTH / SUPPRESSION (monthly)
     if (Q.occupation == 0) {
-        Q.kkk_strength += 5;
+        Q.kkk_strength += 8;
         if (Q.whiteL_formed == 1){
-            Q.whiteL_strength += 5;
+            Q.whiteL_strength += 10;
         }
     } else if (Q.occupation == 1) {
-        Q.kkk_strength += 3;
+        Q.kkk_strength += 6;
         if (Q.whiteL_formed == 1){
-            Q.whiteL_strength += 4;
+            Q.whiteL_strength += 8;
         }
     } else if (Q.occupation == 2) {
-        Q.kkk_strength -= 1;
+        Q.kkk_strength +=1;
         if (Q.whiteL_formed == 1){
             Q.whiteL_strength += 0.5;
         }
