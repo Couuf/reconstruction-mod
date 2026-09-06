@@ -1,6 +1,6 @@
 title: Fundraising
 new-page: true
-view-if: fundraising_timer <= 0 and (not historical_mode)
+view-if: fundraising_timer <= 0 and (not historical_mode) and dues > 0
 on-arrival: fundraising_timer = 6; month_actions += 1
 frequency: 300
 is-card: true
@@ -14,6 +14,7 @@ For better or for worse, the party cannot exist without money.
 - @maintain: Maintain our current dues.
 - @reduce: Reduce dues.
 - @increase: Increase dues.
+- @abolish: Abolish dues entirely.
 
 @maintain
 subtitle: [+ dues +] resources gained.
@@ -24,7 +25,7 @@ We maintain our current dues.
 @reduce
 subtitle: [+ dues - 1 +] resources gained.
 choose-if: dues > 1
-on-arrival: dues -= 1; resources += dues; left_dissent -= 8; center_dissent -= 8; reformist_dissent -= 8; labor_dissent -= 8
+on-arrival: dues -= 1; resources += dues; radical_dissent -= 8; moderate_dissent -= 8; conservative_dissent -= 8; liberal_dissent -= 8
 
 Our current members appreciate this, but no one decides to join a party because of the low dues.
 
@@ -37,3 +38,9 @@ Our members grumble at this, and some of the less committed members leave. But n
 
 [? if unemployed >= 15 : Because of the presently high unemployment, our members are feeling the extra burden hard. ?]
 
+@abolish
+subtitle: Our working-class supporters would like this. [? if unemployed >= 15 : Given the present economic situation, this would be especially appreciated by our members. ?]
+view-if: dues = 1
+on-arrival: dues = 0; radical_dissent -= 15; moderate_dissent -= 15; conservative_dissent -= 15; liberal_dissent -= 15; workers_rep +=10; unemployed_rep += 10; unemployed_rep += 16 if unemployed >= 15 
+
+We have permanently abolished dues! This has made our members happy and made our party more attractive to workers.
