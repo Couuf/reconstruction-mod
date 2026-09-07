@@ -42,31 +42,30 @@ placeholder text
 
 @guilty
 view-if: verdict = 1
-on-arrival: radical_strength += 7; radical_dissent -= 10; moderate_dissent -= 3; conservative_strength -= 5; conservative_dissent +=3; dem_reform_strength +=10; kkk_strength *= 1.2; kkk_militancy += 0.2; whiteL_strength *= 1.2 if whiteL_formed; whiteL_militancy += 0.2 if whiteL_formed; freedmen_rep += 10;
+on-arrival: radical_strength += 7; radical_dissent -= 10; moderate_dissent -= 3; conservative_strength -= 5; conservative_dissent +=3; dem_reform_strength +=10; kkk_strength += 20; kkk_strength *= 1.2; kkk_militancy += 0.2; whiteL_strength *= 1.2 if whiteL_formed; whiteL_militancy += 0.2 if whiteL_formed; freedmen_rep += 10;
 
 It seems our efforts to reform the judiciary and delegitimize secession have been enough, and the court has both found secession to be illegal and Davis to be guilty of treason! <span style="color: #7A1F5C;">**Radicals**</span> are ecstatic and the <span style="color: #9D2933;">**Moderates**</span> seem to just be happy that it worked out, but <span style="color: #B5651D;">**Conservatives**</span> warn that we have only managed to inflame tensions and turn Davis into a martyr. 
 
 Militant groups in the South are outraged by the verdict, and are using it as both recruitment fodder and a rallying cry against federal presence in Southern states. Regardless, this is a massive victory for both the federal government and our wider Reconstruction efforts, and it gives us a stronger standing dealing with the South from now on.
 
-Northern Democrats have also taken the ruling as a vindication of their stance that talk of redemption is a non-starter, and their influence in the party has grown significantly.
+<span style="color: #4682B4;">**Northern Democrats**</span> have also taken the ruling as a vindication of their stance that talk of redemption is a non-starter, and their influence in the party has grown significantly.
 
 @innocent
 view-if: verdict = 2
-on-arrival: radical_strength -= 5; radical_dissent += 5; moderate_dissent += 7; conservative_strength += 7; conservative_dissent += 10; dem_bourbon_strength += 5; kkk_strength *= 1.5; kkk_militancy += 0.35; whiteL_strength *= 1.5 if whiteL_formed; whiteL_militancy += 0.35 if whiteL_formed; freedmen_rep -= 5;
+on-arrival: radical_strength -= 5; radical_dissent += 5; moderate_dissent += 7; conservative_strength += 7; conservative_dissent += 10; dem_bourbon_strength += 5; kkk_strength += 80; kkk_strength *= 1.5; kkk_militancy += 0.35; whiteL_strength *= 1.5 if whiteL_formed; whiteL_militancy += 0.35 if whiteL_formed; freedmen_rep -= 5;
 
 In a massive blow to our efforts to uphold federal authority, the court has found Davis innocent, but fortunately has stopped short of declaring the South's secession to be legal. Though it could be much worse, the mood in the party is still grim. <span style="color: #9D2933;">**Moderates**</span> and <span style="color: #B5651D;">**Conservatives**</span> are fuming, seeing the whole endeavor as a waste of time and resources just to give the Redeemers more propaganda fuel. 
 
 The ruling has also bolstered the strength of the paramilitaries operating in the South as they see it as a validation of their opposition to Reconstruction and federal authority. The vindication of the <span style="color: #B5651D;">**Conservatives**</span>' warnings has also increased their standing in the party after the <span style="color: #7A1F5C;">**Radical**</span> path has seemingly backfired.
 
 @fuck
+// include an option to defy the ruling if radical strength is high enough
 view-if: verdict = 3
 subtitle: **WE FUCKED UP**
-on-arrival: radical_strength -= 15; radical_dissent += 10; moderate_dissent += 15; conservative_strength += 15; conservative_dissent += 20; dem_bourbon_strength += 20; kkk_strength *= 2.5; kkk_militancy += 0.55; whiteL_strength *= 2.5 if whiteL_formed; whiteL_militancy += 0.55 if whiteL_formed; freedmen_rep -= 15;
+on-arrival: radical_strength -= 15; radical_dissent += 10; moderate_dissent += 15; conservative_strength += 15; conservative_dissent += 20; dem_bourbon_strength += 20; kkk_strength += 150; kkk_strength *= 2.5; kkk_militancy += 0.55; whiteL_strength *= 2.5 if whiteL_formed; whiteL_militancy += 0.55 if whiteL_formed; freedmen_rep -= 15;
 
 The worst case scenario has come to pass. Our decision to put the rebel leader on trial has backfired in a spectacular fashion; not only has the court ruled that Davis is not guilty of treason, it has also found that secession itself was not illegal, essentially destroying both the legitimacy of the federal government and that of Reconstruction with the strike of a gavel. 
 
 The party is apoplectic, particularly the <span style="color: #B5651D;">**Conservatives**</span> who warned about this exact possibility. The <span style="color: #7A1F5C;">**Radicals**</span> have been humiliated, and the balance of power within the party has markedly shifted. As for the wider political and legal consequences, our efforts to reintegrate the south are now severely limited. While the Union still won the war, and thus the South will remain a part of the country, our authority over the Southern states has been shattered. 
 
-Across the South, paramilitary groups grow larger and more militant than ever as they're emboldened by a clear and decisive statement from the court: the South was right all along. The narrative of the Redeemers has been legally legitimized, and we are almost powerless to stop it. Our authority as both a party and as the federal government has been hugely diminished, and the proposals to oppose Johnson's reconstruction plan and instate military occupation of the South are now little more than fantasy. 
-
-// include an option to defy the ruling if radical strength is high enough
+Across the South, paramilitary groups grow larger and more militant than ever as they're emboldened by a clear and decisive statement from the court: the South was right all along. The narrative of the Redeemers and <span style="color: #002765;">**Bourbon Democrats**</span> has been legally legitimized, and we are almost powerless to stop it. Our authority as both a party and as the federal government has been hugely diminished, and the proposals to oppose Johnson's reconstruction plan and instate military occupation of the South are now little more than fantasy. 
