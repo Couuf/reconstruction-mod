@@ -59,13 +59,14 @@ In a massive blow to our efforts to uphold federal authority, the court has foun
 The ruling has also bolstered the strength of the paramilitaries operating in the South as they see it as a validation of their opposition to Reconstruction and federal authority. The vindication of the <span style="color: #B5651D;">**Conservatives**</span>' warnings has also increased their standing in the party after the <span style="color: #7A1F5C;">**Radical**</span> path has seemingly backfired.
 
 @fuck
-// include an option to defy the ruling if radical strength is high enough
 view-if: verdict = 3
 subtitle: **WE FUCKED UP**
-on-arrival: radical_strength -= 15; radical_dissent += 10; moderate_dissent += 15; conservative_strength += 15; conservative_dissent += 20; dem_bourbon_strength += 20; kkk_strength += 150; kkk_strength *= 2.5; kkk_militancy += 0.55; whiteL_strength *= 2.5 if whiteL_formed; whiteL_militancy += 0.55 if whiteL_formed; freedmen_rep -= 15;
+on-arrival:  radical_strength -= 15; radical_dissent += 10; moderate_dissent += 15; conservative_strength += 15; conservative_dissent += 20; dem_bourbon_strength += 20; kkk_strength += 150; kkk_strength *= 2.5; kkk_militancy += 0.55; whiteL_strength *= 2.5 if whiteL_formed; whiteL_militancy += 0.55 if whiteL_formed; freedmen_rep -= 15;
 
 The worst case scenario has come to pass. Our decision to put the rebel leader on trial has backfired in a spectacular fashion; not only has the court ruled that Davis is not guilty of treason, it has also found that secession itself was not illegal, essentially destroying both the legitimacy of the federal government and that of Reconstruction with the strike of a gavel. 
 
 The party is apoplectic, particularly the <span style="color: #B5651D;">**Conservatives**</span> who warned about this exact possibility. The <span style="color: #7A1F5C;">**Radicals**</span> have been humiliated, and the balance of power within the party has markedly shifted. As for the wider political and legal consequences, our efforts to reintegrate the south are now severely limited. While the Union still won the war, and thus the South will remain a part of the country, our authority over the Southern states has been shattered. 
 
 Across the South, paramilitary groups grow larger and more militant than ever as they're emboldened by a clear and decisive statement from the court: the South was right all along. The narrative of the Redeemers and <span style="color: #002765;">**Bourbon Democrats**</span> has been legally legitimized, and we are almost powerless to stop it. Our authority as both a party and as the federal government has been hugely diminished, and the proposals to oppose Johnson's reconstruction plan and instate military occupation of the South are now little more than fantasy. 
+
+(// include an option to defy the ruling if radical strength is high enough)
