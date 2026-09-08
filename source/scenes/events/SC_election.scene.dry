@@ -17,7 +17,7 @@ on-display: {!
     contentDiv.appendChild(cardEl);
 !}
 
-= South Carolina State Election, October [+ year +]
+= South Carolina State Election, [+ month : month +], [+ year +]
 
 South Carolina holds elections for the State House of Representatives.
 
