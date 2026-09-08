@@ -155,7 +155,7 @@ on-display: {!
 
 @SC_radical_retained
 title: Republican Government Retained in South Carolina
-view_if: SC_governor_party = "rep";
+view_if: SC_rep_seats > SC_dem_seats
 subtitle: [+ SC_rep_vote +]% to [+ SC_dem_vote +]%
 on-arrival: {!
     Q.SC_freemen_rep = Math.min(100, Q.SC_freemen_rep + 3);
@@ -168,7 +168,7 @@ The Republican coalition — freedmen, Union men, and their allies — holds the
 
 @SC_fusion_win
 title: Fusion Ticket Topples Republican Rule in South Carolina
-view_if: SC_governor_party != "rep";
+view_if: SC_rep_seats < SC_dem_seats
 subtitle: [+ SC_dem_vote +]% to [+ SC_rep_vote +]%
 on-arrival: {!
     Q.SC_freemen_rep = Math.max(0, Q.SC_freemen_rep - 8);
