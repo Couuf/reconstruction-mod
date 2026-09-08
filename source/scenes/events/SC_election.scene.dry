@@ -114,8 +114,8 @@ on-arrival: {!
 	Q.SC_dem_past_seats = Q.SC_dem_seats;
 
 	if (Q.year = 1866) {
-		Q.SC_rep_change = '<i>New<i>/';
-		Q.SC_dem_change = '<i>New<i>/';
+		Q.SC_rep_change = '<i>New<i>';
+		Q.SC_dem_change = '<i>New<i>';
 	}
 
 !}
