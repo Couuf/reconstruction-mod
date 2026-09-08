@@ -59,7 +59,7 @@ on-arrival: {!
 face-image: img/portraits/Benjamin_F_Wade.jpg
 go-to: VP
 
-Benjamin Wade is chosen as our candidate for President. [? if president == "Wade": He will continue his leadership, much to the dismay of the <span style="color: #B5651D;">**Conservatives**</span> ?][? if president == "Johnson": His Senate career and radical ideas may appeal to the party's progressive base ?]
+Benjamin Wade is chosen as our candidate for President[? if president == "Wade": and will continue his leadership?], much to the dismay of the <span style="color: #B5651D;">**Conservatives**</span>. [? if president == "Johnson": His Senate career and radical ideas may appeal to the party's progressive base ?]
 
 @Chase
 subtitle: A rational option
