@@ -103,7 +103,7 @@ on-display: {!
     var chartData = [
       {
         id: "republicans",
-        seats: Q.SC_rep_seats;
+        seats: Q.SC_rep_seats,
         color: "#E3000F",
         outline: "#E3000F"
       },
