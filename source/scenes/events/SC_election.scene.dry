@@ -184,7 +184,7 @@ A Conservative-Democratic fusion ticket has captured the legislature, promising 
 
 @SC_disputed
 title: South Carolina's Election Disputed
-view-if: SC_rep_seats = 0;
+view-if: SC_rep_seats = SC_dem_seats;
 subtitle: Two governors, two legislatures, one Palmetto State.
 
 The result is contested. Both sides claim victory, both have been sworn in, and armed men from the Red Shirts and Union Leagues alike are mustering across the state.
