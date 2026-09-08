@@ -108,6 +108,10 @@ on-arrival: {!
     Q.SC_disputed = (Q.SC_margin <= 4 && paramilitary >= 250) ? 1 : 0;
 	
 	Q.totalSeats = 124;
+	Q.SC_rep_change = Q.SC_rep_seats - Q.SC_rep_past_seats;
+	Q.SC_dem_change = Q.SC_dem_seats - Q.SC_dem_past_seats;
+	Q.SC_rep_past_seats = Q.SC_rep_seats;
+	Q.SC_dem_past_seats = Q.SC_dem_seats;
 
 !}
 on-display: {!
@@ -165,9 +169,9 @@ on-display: {!
 
 {!<tr><td>Party</td><td>Seats</td><td>Change</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px solid;'> </div> !} <span style="color: #c00000;">**Republicans:**</span> {!</td><td>!} [+ SC_rep_seats +] seats {!</td><td>!} [+ str_change_rep_r +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px solid;'> </div> !} <span style="color: #c00000;">**Republicans:**</span> {!</td><td>!} [+ SC_rep_seats +] seats {!</td><td>!} [+ SC_rep_change +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#0015BC'> </div> !} <span style="color: #0015bc;">**Democrats**</span>: {!</td><td>!} [+ dem_r_disp +] seats {!</td><td>!} [+ str_change_dem_r +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#0015BC'> </div> !} <span style="color: #0015bc;">**Democrats**</span>: {!</td><td>!} [+ SC_dem_seats +] seats {!</td><td>!} [+ SC_dem_change +] {!</td></tr>!}
 
 {!</table>!}
 
