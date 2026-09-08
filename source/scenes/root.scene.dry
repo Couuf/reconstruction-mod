@@ -152,6 +152,10 @@ Q.cuba_status = "";
 Q.puerto_rico_status = "";
 Q.alaska_purchased = 0;
 
+// State election timers
+Q.next_SC_election_year = 1866; 
+Q.next_SC_election_month = 11; 
+
 Q.speaker_election_needed = 0;
 Q.speaker_boosted_committee = "";
 Q.speaker_boost_amount = 0;
