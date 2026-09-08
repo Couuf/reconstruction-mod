@@ -148,10 +148,14 @@ on-display: {!
     drawChart();
   }
 !}
-go-to: SC_disputed if SC_disputed = 1; SC_fusion_win if SC_governor_party != "rep"; SC_radical_retained
+
+- @SC_disputed
+- @SC_fusion_win
+- @SC_radical_retained
 
 @SC_radical_retained
 title: Republican Government Retained in South Carolina
+view_if: SC_governor_party = "rep";
 subtitle: [+ SC_rep_vote +]% to [+ SC_dem_vote +]%
 on-arrival: {!
     Q.SC_freemen_rep = Math.min(100, Q.SC_freemen_rep + 3);
@@ -164,6 +168,7 @@ The Republican coalition — freedmen, Union men, and their allies — holds the
 
 @SC_fusion_win
 title: Fusion Ticket Topples Republican Rule in South Carolina
+view_if: SC_governor_party != "rep";
 subtitle: [+ SC_dem_vote +]% to [+ SC_rep_vote +]%
 on-arrival: {!
     Q.SC_freemen_rep = Math.max(0, Q.SC_freemen_rep - 8);
@@ -179,6 +184,7 @@ A Conservative-Democratic fusion ticket has captured the legislature, promising 
 
 @SC_disputed
 title: South Carolina's Election Disputed
+view-if: disputed = 1;
 subtitle: Two governors, two legislatures, one Palmetto State.
 
 The result is contested. Both sides claim victory, both have been sworn in, and armed men from the Red Shirts and Union Leagues alike are mustering across the state.
