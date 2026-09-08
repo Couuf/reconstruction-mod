@@ -4,7 +4,7 @@ tags: event
 view-if: (year = next_house_election_year and month >= next_house_election_month) or (year > next_house_election_year)
 on-departure: in_election = 0; next_house_election_year += 2; n_elections += 1; next_house_election_time = time + 24;
 
-= Elections, [+ month +] [+ year +]
+= Elections, [+ month : month +] [+ year +]
 
 The House elections are to be held now.
 
