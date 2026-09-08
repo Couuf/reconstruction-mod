@@ -9,9 +9,9 @@ on-departure: next_SC_election_year += 2; next_SC_election_month = 11;
 
 South Carolina holds elections for the State House of Representatives.
 
-- @SC_election: May we do our best...
+- @election: May we do our best...
 
-@SC_election
+@election
 on-arrival: {!
 
     // freedmen suppression
