@@ -3,7 +3,7 @@ subtitle: The Palmetto State decides its government.
 tags: event
 new-page: true
 view-if: (year = next_SC_election_year and month >= next_SC_election_month) or (year > next_SC_election_year)
-on-departure: next_SC_election_year += 2; next_SC_election_month = 11;
+on-departure: next_SC_election_year += 2; next_SC_election_month = 10;
 
 = South Carolina State Election, [+ month +] [+ year +]
 
@@ -148,7 +148,6 @@ on-display: {!
     drawChart();
   }
 !}
-
 go-to: SC_disputed if SC_disputed = 1; SC_fusion_win if SC_governor_party != "rep"; SC_radical_retained
 
 @SC_radical_retained
