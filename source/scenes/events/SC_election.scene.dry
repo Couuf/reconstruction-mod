@@ -165,7 +165,7 @@ on-display: {!
 
 {!<tr><td>Party</td><td>Seats</td><td>Change</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px solid;'> </div> !} <span style="color: #c00000;">**Republicans:**</span> {!</td><td>!} [+ Q.SC_rep_seats +] seats {!</td><td>!} [+ str_change_rep_r +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px solid;'> </div> !} <span style="color: #c00000;">**Republicans:**</span> {!</td><td>!} [+ SC_rep_seats +] seats {!</td><td>!} [+ str_change_rep_r +] {!</td></tr>!}
 
 {!<tr><td><div class="box" style='background-color:#0015BC'> </div> !} <span style="color: #0015bc;">**Democrats**</span>: {!</td><td>!} [+ dem_r_disp +] seats {!</td><td>!} [+ str_change_dem_r +] {!</td></tr>!}
 
