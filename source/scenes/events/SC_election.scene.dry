@@ -97,8 +97,8 @@ on-arrival: {!
 	
 	Q.totalSeats = 124;
 
-	
-	on-display: {!
+!}
+on-display: {!
   function drawChart() {
     var chartData = [
       {
@@ -149,8 +149,6 @@ on-arrival: {!
   }
 !}
 
-!}
-
 go-to: SC_disputed if SC_disputed = 1; SC_fusion_win if SC_governor_party != "rep"; SC_radical_retained
 
 @SC_radical_retained
@@ -163,7 +161,7 @@ on-arrival: {!
     Q.radical_strength += 1;
 !}
 
-The Republican coalition — freedmen, Union men, and their allies — holds the statehouse. [+ SC_rep_seats +] of the legislature's 124 seats are held by Republicans, a clear working majority.
+The Republican coalition — freedmen, Union men, and their allies — holds the statehouse. [+ SC_rep_seats +] of the legislature's 124 seats are held by Republicans, a clear working majority and a victory for Reconstruction and racial equality within the state.
 
 @SC_fusion_win
 title: Fusion Ticket Topples Republican Rule in South Carolina
@@ -178,7 +176,7 @@ on-arrival: {!
     Q.kkk_strength += 3;
 !}
 
-A Conservative-Democratic fusion ticket has captured the governorship, promising to "redeem" South Carolina from Republican rule. [+ SC_dem_seats +] of 124 legislative seats are now in Democratic hands
+A Conservative-Democratic fusion ticket has captured the legislature, promising to "redeem" South Carolina from Republican rule. [+ SC_dem_seats +] of 124 legislative seats are now in Democratic hands, in a major defeat for Reconstruction in the state.
 
 @SC_disputed
 title: South Carolina's Election Disputed
