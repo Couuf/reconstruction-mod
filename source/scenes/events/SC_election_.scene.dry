@@ -1,0 +1,188 @@
+title: South Carolina State Election
+subtitle: The Palmetto State decides its government.
+tags: event
+new-page: true
+view-if: (year = next_SC_election_year and month >= next_SC_election_month) or (year > next_SC_election_year)
+on-departure: next_SC_election_year += 2; next_SC_election_month = 11;
+
+= South Carolina State Election, [+ month +] [+ year +]
+
+South Carolina holds elections for the State House of Representatives.
+
+- @SC_election: May we do our best...
+
+@SC_election
+on-arrival: {!
+
+    // freedmen suppression
+    let rawSuppression = Math.min(1, (Q.ViolencePenalty || 0) / 30);
+    let suppressionResistance = Math.min(0.5,
+        (Q.freedmen_education / 100) * 0.25
+        + ((Q.occupation || 0) / 3) * 0.25
+    );
+    let effectiveSuppression = Math.max(0, rawSuppression - suppressionResistance);
+
+    let repVotes = 0, demVotes = 0, otherVotes = 0, libVotes = 0;
+
+    for (let cls of Q.classes) {
+        let pop = Q["SC_" + cls] || 0;
+        if (cls === "freemen") {
+            if (Q.fifthteen == 0) continue;
+            pop = pop * (1 - effectiveSuppression);
+        }
+
+        let localRep = Q["SC_" + cls + "_rep"] || 0;
+        let localDem = Q["SC_" + cls + "_dem"] || 0;
+        let localLib = Q["SC_" + cls + "_lib"] || 0;
+        let localOther = Q["SC_" + cls + "_other"] || 0;
+
+        let natRep = Q[cls + "_rep"] || 0;
+        let natDem = Q[cls + "_dem"] || 0;
+        let natLib = Q[cls + "_lib"] || 0;
+        let natOther = Q[cls + "_other"] || 0;
+
+        let adjRep = 0.5 * localRep + 0.5 * natRep;
+        let adjDem = 0.5 * localDem + 0.5 * natDem;
+        let adjLib = 0.5 * localLib + 0.5 * natLib;
+        let adjOther = 0.5 * localOther + 0.5 * natOther;
+
+        let total = adjRep + adjDem + adjLib + adjOther;
+        if (!total) continue;
+
+        repVotes += pop * (adjRep / total);
+        demVotes += pop * (adjDem / total);
+        libVotes += pop * (adjLib / total);
+        otherVotes += pop * (adjOther / total);
+    }
+
+    // i stole this from 1876 potus
+    let paramilitary = (Q.kkk_strength || 0) + (Q.whiteL_strength || 0);
+    let fraudShift = Math.min(35, paramilitary * 0.12) * (0.85 + Math.random() * 0.3);
+    let totalVotes = repVotes + demVotes + libVotes + otherVotes;
+    if (totalVotes > 0 && fraudShift > 0) {
+        let shiftAmount = totalVotes * (fraudShift / 100);
+        repVotes -= shiftAmount;
+        demVotes += shiftAmount;
+    }
+
+    Q.SC_rep_vote = Math.round((repVotes / totalVotes) * 1000) / 10;
+    Q.SC_dem_vote = Math.round((demVotes / totalVotes) * 1000) / 10;
+    Q.SC_lib_vote = Math.round((libVotes / totalVotes) * 1000) / 10;
+    Q.SC_other_vote = Math.round((otherVotes / totalVotes) * 1000) / 10;
+
+    Q.SC_governor_party = (repVotes >= demVotes && repVotes >= otherVotes) ? "rep" : (demVotes >= otherVotes ? "dem" : "other");
+
+    function allocateSeats(percentages, totalSeats) {
+        const floored = {}, remainders = [];
+        let totalFloored = 0;
+        for (const p in percentages) {
+            const exact = (percentages[p] * totalSeats) / 100;
+            floored[p] = Math.floor(exact);
+            totalFloored += floored[p];
+            remainders.push({ p, r: exact - floored[p] });
+        }
+        remainders.sort((a, b) => b.r - a.r);
+        for (let i = 0; i < totalSeats - totalFloored; i++) floored[remainders[i].p]++;
+        return floored;
+    }
+
+    let seats = allocateSeats({ rep: Q.SC_rep_vote, dem: Q.SC_dem_vote, other: Q.SC_lib_vote + Q.SC_other_vote }, 124);
+    Q.SC_rep_seats = seats.rep;
+    Q.SC_dem_seats = seats.dem;
+    Q.SC_other_seats = seats.other;
+    Q.SC_rep_majority = (seats.rep > 62) ? 1 : 0;
+
+    Q.SC_margin = Math.abs(Q.SC_rep_vote - Q.SC_dem_vote);
+    Q.SC_disputed = (Q.SC_margin <= 4 && paramilitary >= 250) ? 1 : 0;
+	
+	Q.totalSeats = 124;
+
+	
+	on-display: {!
+  function drawChart() {
+    var chartData = [
+      {
+        id: "republicans",
+        seats: Q.SC_rep_seats;
+        color: "#E3000F",
+        outline: "#E3000F"
+      },
+      {
+        id: "democrats",
+        seats: Q.SC_dem_seats,
+        color: "#0015bc",
+        outline: "#0015BC"
+      },
+    ].filter(d => d.seats > 0);
+
+    var width = Math.min(500, document.getElementById('content').offsetWidth - 50);
+
+    var container = d3.select("#houseChart");
+    if (container.empty()) {
+      container = d3.select("#content").append("svg").attr("id", "houseChart");
+    }
+    container.attr("width", width)
+             .attr("height", width / 2)
+             .html("");
+
+    var parliament = d3.parliament().width(width).innerRadiusCoef(0.4);
+    container.data([chartData]).call(parliament);
+  }
+
+  if (!window.d3) {
+    var script = document.createElement('script');
+    script.src = 'https://d3js.org/d3.v7.min.js';
+    script.onload = function() {
+      var subscript = document.createElement('script');
+      subscript.src = 'https://cdn.jsdelivr.net/npm/d3-parliament@1.0.3/build/d3-parliament.min.js';
+      subscript.onload = drawChart;
+      document.head.appendChild(subscript);
+    };
+    document.head.appendChild(script);
+  } else if (!window.d3.parliament) {
+    var script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/d3-parliament@1.0.3/build/d3-parliament.min.js';
+    script.onload = drawChart;
+    document.head.appendChild(script);
+  } else {
+    drawChart();
+  }
+!}
+
+!}
+
+go-to: SC_disputed if SC_disputed = 1; SC_fusion_win if SC_governor_party != "rep"; SC_radical_retained
+
+@SC_radical_retained
+title: Republican Government Retained in South Carolina
+subtitle: [+ SC_rep_vote +]% to [+ SC_dem_vote +]%
+on-arrival: {!
+    Q.SC_freemen_rep = Math.min(100, Q.SC_freemen_rep + 3);
+    Q.SC_workers_rep = Math.min(100, Q.SC_workers_rep + 1);
+    Q.freedmen_rep += 2;
+    Q.radical_strength += 1;
+!}
+
+The Republican coalition — freedmen, Union men, and their allies — holds the statehouse. [+ SC_rep_seats +] of the legislature's 124 seats are held by Republicans, a clear working majority.
+
+@SC_fusion_win
+title: Fusion Ticket Topples Republican Rule in South Carolina
+subtitle: [+ SC_dem_vote +]% to [+ SC_rep_vote +]%
+on-arrival: {!
+    Q.SC_freemen_rep = Math.max(0, Q.SC_freemen_rep - 8);
+    Q.SC_workers_rep = Math.max(0, Q.SC_workers_rep - 3);
+    Q.SC_middle_class_rep = Math.max(0, Q.SC_middle_class_rep - 3);
+    Q.SC_rural_rep = Math.max(0, Q.SC_rural_rep - 4);
+    Q.freedmen_rep -= 3;
+    Q.conservative_strength += 2;
+    Q.kkk_strength += 3;
+!}
+
+A Conservative-Democratic fusion ticket has captured the governorship, promising to "redeem" South Carolina from Republican rule. [+ SC_dem_seats +] of 124 legislative seats are now in Democratic hands
+
+@SC_disputed
+title: South Carolina's Election Disputed
+// i feel like this is an interesting concept but idek if i want to include because i don't actually know where to go with it mechanically, just gonna leave it dormant here for now
+subtitle: Two governors, two legislatures, one Palmetto State.
+
+The result is contested. Both sides claim victory, both have been sworn in, and armed men from the Red Shirts and Union Leagues alike are mustering across the state.
