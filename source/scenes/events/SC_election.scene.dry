@@ -4,6 +4,18 @@ tags: event
 new-page: true
 view-if: (year = next_SC_election_year and month >= next_SC_election_month) or (year > next_SC_election_year)
 on-departure: next_SC_election_year += 2; next_SC_election_month = 10;
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "img/sc.png";  
+
+    cardEl.appendChild(image);  
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
 
 = South Carolina State Election, [+ month +] [+ year +]
 
