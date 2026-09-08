@@ -113,6 +113,11 @@ on-arrival: {!
 	Q.SC_rep_past_seats = Q.SC_rep_seats;
 	Q.SC_dem_past_seats = Q.SC_dem_seats;
 
+	if (Q.year = 1866) {
+		Q.SC_rep_change = '<i>New<i>/';
+		Q.SC_dem_change = '<i>New<i>/';
+	}
+
 !}
 on-display: {!
   function drawChart() {
@@ -207,6 +212,8 @@ on-arrival: {!
 !}
 
 A Conservative-Democratic fusion ticket has captured the legislature, promising to "redeem" South Carolina from Republican rule. [+ SC_dem_seats +] of 124 legislative seats are now in Democratic hands, in a major defeat for Reconstruction in the state.
+
+(add an option if radical strength is high enough to send in the military and install a republican government anyways)
 
 @SC_disputed
 title: South Carolina's Election Disputed
