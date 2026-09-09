@@ -240,7 +240,7 @@ We've sent in the military to dissolve the <span style="color: #0015bc;">**Democ
 The freedmen, however, are quite grateful for our intervention.
 
 @back_off
-on-arrival {!
+on-arrival: {!
 	Q.SC_freemen_rep = Math.max(0, Q.SC_freemen_rep - 8);
     Q.SC_workers_rep = Math.max(0, Q.SC_workers_rep - 3);
     Q.SC_middle_class_rep = Math.max(0, Q.SC_middle_class_rep - 3);
