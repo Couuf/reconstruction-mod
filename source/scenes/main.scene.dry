@@ -35,6 +35,64 @@ if (Q.advisor_action_timer <= 0) {
 }
 !}
 max-cards: 4
+on-display: {!
+if (!document.getElementById('news_tab')) {
+    var button = document.createElement('button');
+    button.style.backgroundColor = '#dddddd';
+    button.className = 'tab_button';
+    button.id = 'news_tab';
+    button.textContent = 'View Right-Wing News';
+    button.onclick = function () {
+        toggleNews();
+    };
+    var contentDiv = document.getElementById('content');
+    contentDiv.appendChild(button);
+    const elements = document.querySelectorAll('.dnvp');
+    let hasTextContent = false;
+    elements.forEach(function (element) {
+        if (element.textContent.trim() !== '') {
+            hasTextContent = true;
+        }
+    });
+    if (hasTextContent) {
+        button.style.backgroundColor = 'rgba(255, 0, 0, 0.5)'; // New color
+    } else {
+        button.style.backgroundColor = '#dddddd'; // Original color
+    }
+    document.querySelectorAll('p').forEach(p => {
+        if (!p.textContent.trim()) {
+            p.remove();
+        }
+    });
+}
+
+const scrollableBox = document.querySelector('div.scrollable-box');
+
+if (scrollableBox && !document.getElementById('ok') && Q.stimulation) {
+  const video = document.createElement('video');
+  video.id = 'ok';
+  video.autoplay = true;
+  video.muted = true;
+  video.loop = true;
+  video.style.width = '100%';
+
+  const source = document.createElement('source');
+  source.src = 'img/lol.mp4';
+  source.type = 'video/mp4';
+
+  video.appendChild(source);
+
+  const randomStart = Math.random() * 3198;
+  video.currentTime = randomStart;
+
+  scrollableBox.parentNode.insertBefore(video, scrollableBox);
+}
+
+const boxes = document.querySelectorAll('.scrollable-box');
+if (boxes.length >= 2) {
+    boxes[1].remove();
+}
+!}
 
 #Here, the main deck will be displayed. Clicking on the deck draws a card into your hand. Clicking on a card activates that card.
 
