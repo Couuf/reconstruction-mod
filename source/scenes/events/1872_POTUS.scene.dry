@@ -8,7 +8,7 @@ max-visits: 1
 
 The Presidential election is to be held now.
 
-[? if greeley_fusion = 1 : The <span style="color: #0015bc;">**Democrats**</span> have endorsed the <span style="color: #DAA520;">**Liberal Republican**</span> ticket of Greeley and Brown, uniting the opposition behind a single anti-Grant candidate. ?]
+[? if greeley_fusion = 1 : The <span style="color: #0015bc;">**Democrats**</span> have endorsed the <span style="color: #DAA520;">**Liberal Republican**</span> ticket of Greeley and Brown, uniting the opposition behind a single anti-[+ president +] candidate. ?]
 [? if liberal_split = 1 and greeley_fusion = 0 : The <span style="color: #DAA520;">**Liberal Republicans**</span> have fielded Greeley independently while the <span style="color: #0015bc;">**Democrats**</span> run their own candidate, splitting the opposition vote. ?]
 [? if liberal_split = 0 : The <span style="color: #0015bc;">**Democrats**</span> are running their own candidate against the <span style="color: #c00000;">**Republicans**</span> in a straight two-party contest. ?]
 
