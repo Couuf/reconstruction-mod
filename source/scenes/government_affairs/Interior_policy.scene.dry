@@ -78,7 +78,9 @@ Ever since the beginning of Anglo-American rule in North America, we have had to
 - @assimilation_policies: Advance policies to assimilate Native Americans into American society.
 
 @peaceful_negotiations
-view-if: Sioux_Treaty = 0
+view-if: Sioux_Treaty < 1
+choose-if: Sioux_Treaty = 0
+unavailable-subtitle: Thanks to our aggressive military action against the Natives, they don't trust us enough to enter diplomatic talks for the foreseeable future.
 on-arrival: Sioux_Treaty += 1; native_relations += 1
 
 We open diplomatic talks with tribal leaders to prevent further bloodshed between settlers and the Native nations. This is the first step toward a broader peace.
