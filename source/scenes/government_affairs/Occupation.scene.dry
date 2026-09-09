@@ -113,11 +113,11 @@ on-arrival: {!
     }
 !}
 
-Federal grand juries begin indicting Klan leaders under the new statutes. Many are convicted in federal court, which unlike local courts is not packed with sympathizers. The organization is thrown into disarray.[? if habeas_suspended = 1 : With habeas corpus suspended, suspects can be held and tried by military tribunal without the usual procedural delays. The prosecutions move faster and cut deeper than anything a civilian court could have managed. But the scale and nature of these proceedings will not go unchallenged. ?]
+Federal grand juries begin indicting Klan leaders under the new statutes. Many are convicted in federal court, which unlike local courts is not packed with sympathizers. The organization is thrown into disarray. [? if habeas_suspended = 1 : With habeas corpus suspended, suspects can be held and tried by military tribunal without the usual procedural delays. The prosecutions move faster and cut deeper than anything a civilian court could have managed. But the scale and nature of these proceedings will not go unchallenged. ?]
 
 @suspend_habeas
 title: Suspend habeas corpus in the worst-affected counties
-view-if: enforcement_acts = 1
+view-if: habeas_suspended = 0
 choose-if: occupation >= 2 and kkk_strength + whiteL_strength >= 500 and army_loyalty >= 0.65
 unavailable-subtitle: [? if enforcement_acts = 0: The Enforcement Acts are required before this step can be taken. ?][? if occupation < 2: Full federal occupation is required. ?][? if kkk_strength + whiteL_strength < 500: Conditions are not yet severe enough to justify this measure. ?][? if army_loyalty < 0.65: The army cannot be relied upon for this operation. ?]
 on-arrival: {!
@@ -143,6 +143,8 @@ The President formally suspends the writ of habeas corpus across several countie
 The results on the ground are real: violence drops sharply in the affected areas, and freedmen report being able to move and organize with less fear. But the political cost is severe. <span style="color: #0015bc;">**Democrats**</span> call it the beginning of military despotism. Even some <span style="color: #c00000;">**Republicans**</span> are uncomfortable. <span style="color: #DAA520;">**Liberal Republican**</span> dissent spikes. Abroad, the action draws criticism from governments that had praised American republican institutions.
 
 The violence has been suppressed. Whether the suppression can last is another question.
+
+
 
 @reinstate_state_militias
 title: Reform Southern <span style="color: #c00000;">**Republican**</span> State Militias
@@ -195,7 +197,7 @@ on-arrival: {!
     Q.freedmen_rep += Q.enforcement_acts ? 2 : 1;
 !}
 
-A modest contingent of federal soldiers boards the southbound trains.[? if enforcement_acts = 1 : With clear legal authority behind the deployment, local commanders have fewer doubts about their mandate. ?]
+A modest contingent of federal soldiers boards the southbound trains. [? if enforcement_acts = 1 : With clear legal authority behind the deployment, local commanders have fewer doubts about their mandate. ?]
 
 @Ten
 title: Send 10,000 soldiers to the South
@@ -214,7 +216,7 @@ on-arrival: {!
     Q.freedmen_rep += Q.enforcement_acts ? 5 : 3;
 !}
 
-Ten thousand soldiers are ordered south by rail and river. <span style="color: #c00000;">**Republican**</span> governors have been notified and the Bureau is coordinating with local commanders on where the need is greatest.[? if enforcement_acts = 1 : Soldiers now arrive with federal arrest authority behind them, not just rifles. ?]
+Ten thousand soldiers are ordered south by rail and river. <span style="color: #c00000;">**Republican**</span> governors have been notified and the Bureau is coordinating with local commanders on where the need is greatest. [? if enforcement_acts = 1 : Soldiers now arrive with federal arrest authority behind them, not just rifles. ?]
 
 @Fifty
 title: Send 50,000 soldiers to the South
@@ -234,4 +236,4 @@ on-arrival: {!
     Q.freedmen_rep += Q.enforcement_acts ? 9 : 6;
 !}
 
-Fifty thousand soldiers are mobilized for the South, the largest federal deployment since the war's end. The order is given. The army moves.[? if enforcement_acts = 1 : They go south not merely as an occupying force but as the arm of federal law, with court orders and arrest warrants alongside their rifles. ?]
+Fifty thousand soldiers are mobilized for the South, the largest federal deployment since the war's end. The order is given. The army moves. [? if enforcement_acts = 1 : They go south not merely as an occupying force but as the arm of federal law, with court orders and arrest warrants alongside their rifles. ?]
