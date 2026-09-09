@@ -40,7 +40,7 @@ max-cards: 4
 
 {!<div class="scrollable-box">!}
 
-test text
+{!<p class="both">!} [? if year = 1865 and month = 5: test text ?] 
 
 {!</div>!}
 
