@@ -4,7 +4,7 @@ tags: event
 view-if: year = 1872 and month = 11
 max-visits: 1
 
-= Elections, [+ month +] [+ year +]
+= Elections, [+ month : month +] [+ year +]
 
 The Presidential election is to be held now.
 
