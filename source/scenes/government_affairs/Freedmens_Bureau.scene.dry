@@ -24,62 +24,37 @@ General Oliver Howard's Bureau operates schools, labor offices, and makeshift co
 
 Which state should we concentrate Bureau resources on this season?
 
-- @alabama: Alabama
-- @mississippi: Mississippi
-- @georgia: Georgia
-- @florida: Florida
-- @north_carolina: North Carolina
-- @south_carolina: South Carolina
-- @louisiana: Louisiana
-- @arkansas: Arkansas
-- @texas: Texas
-- @virginia: Virginia
+- @alabama: Alabama and Mississippi
+- @florida: Georgia and Florida
+- @carolinas: The Carolinas
+- @texas: Texas and Louisiana
+- @virginia: Virginia and Arkansas
 - @easy_discard
 - @cancel_advisor_action
 
 @alabama
 go-to: bureau_action
-on-arrival: bureau_target = "Alabama"
-
-@mississippi
-go-to: bureau_action
-on-arrival: bureau_target = "Mississippi"
-
-@georgia
-go-to: bureau_action
-on-arrival: bureau_target = "Georgia"
+on-arrival: bureau_target = "Alabama"; bureau_target2 = "Mississippi"
 
 @florida
 go-to: bureau_action
-on-arrival: bureau_target = "Florida"
+on-arrival: bureau_target = "Florida"; bureau_target2 = "Georgia"
 
-@north_carolina
+@carolinas
 go-to: bureau_action
-on-arrival: bureau_target = "North Carolina"
-
-@south_carolina
-go-to: bureau_action
-on-arrival: bureau_target = "South Carolina"
-
-@louisiana
-go-to: bureau_action
-on-arrival: bureau_target = "Louisiana"
-
-@arkansas
-go-to: bureau_action
-on-arrival: bureau_target = "Arkansas"
+on-arrival: bureau_target = "North Carolina"; bureau_target2 = "South Carolina"
 
 @texas
 go-to: bureau_action
-on-arrival: bureau_target = "Texas"
+on-arrival: bureau_target = "Texas"; bureau_target2 = "Louisiana"
 
 @virginia
 go-to: bureau_action
-on-arrival: bureau_target = "Virginia"
+on-arrival: bureau_target = "Virginia"; bureau_target2 = "Arkansas"
 
 @bureau_action
 
-Bureau agents are on the ground in [+ bureau_target +]. What should they prioritize this season?
+Bureau agents are on the ground in [+ bureau_target +] and [+ bureau_target2 +]. What should they prioritize this season?
 
 - @schools: Open new Bureau schoolhouses and hire local teachers.
 - @courts: Station Bureau agents in local courthouses to assist freedmen with labor disputes.
@@ -95,17 +70,20 @@ subtitle: -[+ bureau_cost +] budget
 choose-if: budget >= bureau_cost
 unavailable-subtitle: Not enough budget.
 on-arrival:{!
-
     Q.freedmen_education += 2;
     Q.budget -= bureau_cost;
     let s = Q.bureau_target;
     Q[s + "_freemen_rep"] = Math.min(100, (Q[s + "_freemen_rep"] || 0) + 4);
     Q[s + "_workers_rep"] = Math.min(100, (Q[s + "_workers_rep"] || 0) + 1);
     Q[s + "_immigrant_laborers_rep"] = Math.min(100, (Q[s + "_workers_rep"] || 0) + 1);
+    let s = Q.bureau_target2;
+    Q[s + "_freemen_rep"] = Math.min(100, (Q[s + "_freemen_rep"] || 0) + 4);
+    Q[s + "_workers_rep"] = Math.min(100, (Q[s + "_workers_rep"] || 0) + 1);
+    Q[s + "_immigrant_laborers_rep"] = Math.min(100, (Q[s + "_workers_rep"] || 0) + 1);
 
 !}
 
-New schoolhouses open across [+ bureau_target +]. Freedmen of all ages attend in the evenings after fieldwork. Planters pressure landlords to evict teachers, and night riders burn two buildings before the month is out but enrollment keeps climbing.
+New schoolhouses open across [+ bureau_target +] and [+ bureau_target2 +]. Freedmen of all ages attend in the evenings after fieldwork. Planters pressure landlords to evict teachers, and night riders burn two buildings before the month is out but enrollment keeps climbing.
 
 @courts
 subtitle: -[+ bureau_cost +] budget
@@ -116,6 +94,7 @@ on-arrival: {!
     Q.judicial_reform += 0.25;
     Q[s + "_freemen_rep"] = Math.min(100, (Q[s + "_freemen_rep"] || 0) + 3);
     Q[s + "_rural_rep"] = Math.min(100, (Q[s + "_rural_rep"] || 0) + 1);
+    
 !}
 
 Bureau agents begin adjudicating labor disputes in [+ bureau_target +], voiding exploitative sharecropping agreements and ruling in favor of freedmen owed back wages. It is a small improvement the courts remain hostile but freedmen learn they have somewhere to turn.
