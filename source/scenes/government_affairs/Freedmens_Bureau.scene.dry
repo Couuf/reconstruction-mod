@@ -76,10 +76,10 @@ on-arrival:{!
     Q[s + "_freemen_rep"] = Math.min(100, (Q[s + "_freemen_rep"] || 0) + 4);
     Q[s + "_workers_rep"] = Math.min(100, (Q[s + "_workers_rep"] || 0) + 1);
     Q[s + "_immigrant_laborers_rep"] = Math.min(100, (Q[s + "_workers_rep"] || 0) + 1);
-    let s = Q.bureau_target2;
-    Q[s + "_freemen_rep"] = Math.min(100, (Q[s + "_freemen_rep"] || 0) + 4);
-    Q[s + "_workers_rep"] = Math.min(100, (Q[s + "_workers_rep"] || 0) + 1);
-    Q[s + "_immigrant_laborers_rep"] = Math.min(100, (Q[s + "_workers_rep"] || 0) + 1);
+    let b = Q.bureau_target2;
+    Q[b + "_freemen_rep"] = Math.min(100, (Q[b + "_freemen_rep"] || 0) + 4);
+    Q[b + "_workers_rep"] = Math.min(100, (Q[b + "_workers_rep"] || 0) + 1);
+    Q[b + "_immigrant_laborers_rep"] = Math.min(100, (Q[b + "_workers_rep"] || 0) + 1);
 
 !}
 
@@ -95,9 +95,9 @@ on-arrival: {!
     let s = Q.bureau_target;
     Q[s + "_freemen_rep"] = Math.min(100, (Q[s + "_freemen_rep"] || 0) + 3);
     Q[s + "_rural_rep"] = Math.min(100, (Q[s + "_rural_rep"] || 0) + 1);
-    let s = Q.bureau_target2;
-    Q[s + "_freemen_rep"] = Math.min(100, (Q[s + "_freemen_rep"] || 0) + 3);
-    Q[s + "_rural_rep"] = Math.min(100, (Q[s + "_rural_rep"] || 0) + 1);
+    let b = Q.bureau_target2;
+    Q[b + "_freemen_rep"] = Math.min(100, (Q[b + "_freemen_rep"] || 0) + 3);
+    Q[b + "_rural_rep"] = Math.min(100, (Q[b + "_rural_rep"] || 0) + 1);
     
 !}
 
@@ -115,8 +115,8 @@ on-arrival:{!
     Q[s + "_freemen_rep"] = Math.min(100, (Q[s + "_freemen_rep"] || 0) + 5);
     Q.Union_League_strength = Math.min(1000, (Q.Union_League_strength || 0) + 25);
     Q.kkk_militancy = Math.min(1, (Q.kkk_militancy || 0) + 0.03);
-    let s = Q.bureau_target2;
-    Q[s + "_freemen_rep"] = Math.min(100, (Q[s + "_freemen_rep"] || 0) + 5);
+    let b = Q.bureau_target2;
+    Q[b + "_freemen_rep"] = Math.min(100, (Q[b + "_freemen_rep"] || 0) + 5);
 !}
 
 Agents move through [+ bureau_target +] and [+ bureau_target2 +] registering freedmen voters and distributing pamphlets explaining the new amendment. The Klan responds with targeted intimidation, but hundreds of new names appear on the rolls before the season ends.
@@ -136,10 +136,10 @@ on-arrival: {!
     Q[s + "_workers_rep"] = Math.min(100, (Q[s + "_workers_rep"] || 0) + 2);
     Q[s + "_middle_class_rep"] = Math.min(100, (Q[s + "_middle_class_rep"] || 0) + 1);
     Q.Union_League_strength = Math.min(1000, (Q.Union_League_strength || 0) + 15);
-    let s = Q.bureau_target2;
-    Q[s + "_freemen_rep"] = Math.min(100, (Q[s + "_freemen_rep"] || 0) + 2);
-    Q[s + "_workers_rep"] = Math.min(100, (Q[s + "_workers_rep"] || 0) + 2);
-    Q[s + "_middle_class_rep"] = Math.min(100, (Q[s + "_middle_class_rep"] || 0) + 1);
+    let b = Q.bureau_target2;
+    Q[b + "_freemen_rep"] = Math.min(100, (Q[b + "_freemen_rep"] || 0) + 2);
+    Q[b + "_workers_rep"] = Math.min(100, (Q[b + "_workers_rep"] || 0) + 2);
+    Q[b + "_middle_class_rep"] = Math.min(100, (Q[b + "_middle_class_rep"] || 0) + 1);
     Q.Union_League_strength = Math.min(1000, (Q.Union_League_strength || 0) + 15);
 !}
 
@@ -156,8 +156,8 @@ on-arrival: {!
     Q.freedmen_turnout = Math.min(100, (Q.freedmen_turnout || 0) + 3);
     let s = Q.bureau_target;
     Q[s + "_freemen_rep"] = Math.min(100, (Q[s + "_freemen_rep"] || 0) + 2);
-    let s = Q.bureau_target2;
-    Q[s + "_freemen_rep"] = Math.min(100, (Q[s + "_freemen_rep"] || 0) + 2);
+    let b = Q.bureau_target2;
+    Q[b + "_freemen_rep"] = Math.min(100, (Q[b + "_freemen_rep"] || 0) + 2);
 !}
 
 A detachment of federal infantry takes up position around Bureau headquarters in [+ bureau_target +] and [+ bureau_target2 +]. Night raids on Bureau offices drop sharply. With less violence in the air, agents report being able to move and register voters more freely at least for now.
