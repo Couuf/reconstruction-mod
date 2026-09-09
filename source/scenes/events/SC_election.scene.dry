@@ -213,7 +213,7 @@ on-arrival: {!
 
 [? if SC_gov = "dem": The <span style="color: #0015bc;">**Democratic**</span> majority has held on. They will continue their pro-redeemer, anti-Reconstruction policies, much to our dismay. ?]
 
-[? if SC_gov = "dem" and occupation = 2: Given that the <span style="color: #0015bc;">**Democratic**</span> victory in the election was almost certainly only the result of violent voter suppression, the <span style="color: #7A1F5C;">**Radicals**</span> have demanded that the federal government directly intervene to occupy the state and install a <span style="color: #c00000;">**Republican**</span> government. ?]
+[? if SC_gov = "dem": Given that the <span style="color: #0015bc;">**Democratic**</span> victory in the election was almost certainly only the result of violent voter suppression, the <span style="color: #7A1F5C;">**Radicals**</span> have demanded that the federal government directly intervene to occupy the state and install a <span style="color: #c00000;">**Republican**</span> government. ?]
 
 
 - @send_troops: Send in the military and dissolve this illegitimate government!
@@ -221,9 +221,9 @@ on-arrival: {!
 
 
 @send_troops
-choose-if: radical_strength > (moderate_strength/3 + liberal_strength/2 + conservative_strength) and army_loyalty >= 0.7 
+choose-if: radical_strength > (moderate_strength/3 + liberal_strength/2 + conservative_strength) and army_loyalty >= 0.7 and president_party = "rep"
 subtitle: This will be controversial, to say the least.
-unavailable-subtitle: [? if radical_strength < (moderate_strength/3 + liberal_strength/2 + conservative_strength): The <span style="color: #7A1F5C;">**Radicals**</span> are not strong enough to convince the party. ?][? if army_loyalty < 0.7: The army is unwilling to do this. ?][? if judicial_reform < 2: There is no chance this would survive in court. ?]
+unavailable-subtitle: [? if radical_strength < (moderate_strength/3 + liberal_strength/2 + conservative_strength): The <span style="color: #7A1F5C;">**Radicals**</span> are not strong enough to convince the party. ?][? if army_loyalty < 0.7: The army is unwilling to do this. ?][? if judicial_reform < 2: There is no chance this would survive in court. ?][? if president_party != "rep": The President refuses to order the military in. ?]
 on-arrival: {!
 	Q.SC_freemen_rep = Math.min(100, Q.SC_freemen_rep + 8);
     Q.SC_workers_rep = Math.min(100, Q.SC_workers_rep + 1);
