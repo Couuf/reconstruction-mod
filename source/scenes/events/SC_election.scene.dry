@@ -215,8 +215,9 @@ on-arrival: {!
 
 [? if SC_gov = "dem" and occupation = 2: Given that the <span style="color: #0015bc;">**Democratic**</span> victory in the election was almost certainly only the result of violent voter suppression, the <span style="color: #7A1F5C;">**Radicals**</span> have demanded that the federal government directly intervene to occupy the state and install a <span style="color: #c00000;">**Republican**</span> government. ?]
 
- - @send_troops: Send in the military and dissolve this illegitimate government!
- - @back_off: The risks are too high, we have no choice but to back off.
+
+- @send_troops: Send in the military and dissolve this illegitimate government!
+- @back_off: The risks are too high, we have no choice but to back off.
 
 
 @send_troops
