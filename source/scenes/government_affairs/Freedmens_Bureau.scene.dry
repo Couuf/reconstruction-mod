@@ -92,12 +92,16 @@ unavailable-subtitle: Not enough budget.
 on-arrival: {!
     Q.budget -= bureau_cost;
     Q.judicial_reform += 0.25;
+    let s = Q.bureau_target;
+    Q[s + "_freemen_rep"] = Math.min(100, (Q[s + "_freemen_rep"] || 0) + 3);
+    Q[s + "_rural_rep"] = Math.min(100, (Q[s + "_rural_rep"] || 0) + 1);
+    let s = Q.bureau_target2;
     Q[s + "_freemen_rep"] = Math.min(100, (Q[s + "_freemen_rep"] || 0) + 3);
     Q[s + "_rural_rep"] = Math.min(100, (Q[s + "_rural_rep"] || 0) + 1);
     
 !}
 
-Bureau agents begin adjudicating labor disputes in [+ bureau_target +], voiding exploitative sharecropping agreements and ruling in favor of freedmen owed back wages. It is a small improvement the courts remain hostile but freedmen learn they have somewhere to turn.
+Bureau agents begin adjudicating labor disputes in [+ bureau_target +] and [+ bureau_target2 +], voiding exploitative sharecropping agreements and ruling in favor of freedmen owed back wages. It is a small improvement, and the courts remain hostile, but freedmen learn they have somewhere to turn.
 
 @registration
 subtitle: -[+ bureau_cost +] budget
@@ -111,9 +115,11 @@ on-arrival:{!
     Q[s + "_freemen_rep"] = Math.min(100, (Q[s + "_freemen_rep"] || 0) + 5);
     Q.Union_League_strength = Math.min(1000, (Q.Union_League_strength || 0) + 25);
     Q.kkk_militancy = Math.min(1, (Q.kkk_militancy || 0) + 0.03);
+    let s = Q.bureau_target2;
+    Q[s + "_freemen_rep"] = Math.min(100, (Q[s + "_freemen_rep"] || 0) + 5);
 !}
 
-Agents move through [+ bureau_target +] registering freedmen voters and distributing pamphlets explaining the new amendment. The Klan responds with targeted intimidation, but hundreds of new names appear on the rolls before the season ends.
+Agents move through [+ bureau_target +] and [+ bureau_target2 +] registering freedmen voters and distributing pamphlets explaining the new amendment. The Klan responds with targeted intimidation, but hundreds of new names appear on the rolls before the season ends.
 
 [? if ViolencePenalty >= 20 : Heavy paramilitary presence limited how many registrations agents could safely complete. ?][? if ViolencePenalty < 10 : With little violent resistance, agents were able to work freely and registration numbers surged. ?]
 
@@ -130,9 +136,14 @@ on-arrival: {!
     Q[s + "_workers_rep"] = Math.min(100, (Q[s + "_workers_rep"] || 0) + 2);
     Q[s + "_middle_class_rep"] = Math.min(100, (Q[s + "_middle_class_rep"] || 0) + 1);
     Q.Union_League_strength = Math.min(1000, (Q.Union_League_strength || 0) + 15);
+    let s = Q.bureau_target2;
+    Q[s + "_freemen_rep"] = Math.min(100, (Q[s + "_freemen_rep"] || 0) + 2);
+    Q[s + "_workers_rep"] = Math.min(100, (Q[s + "_workers_rep"] || 0) + 2);
+    Q[s + "_middle_class_rep"] = Math.min(100, (Q[s + "_middle_class_rep"] || 0) + 1);
+    Q.Union_League_strength = Math.min(1000, (Q.Union_League_strength || 0) + 15);
 !}
 
-Bureau officers meet with Black ministers, freedmen community leaders, and Southern <span style="color: #c00000;">**Republican**</span> organizers in [+ bureau_target +]. Trust is slow to build, but the network grows, and these connections will matter come election time.
+Bureau officers meet with Black ministers, freedmen community leaders, and Southern <span style="color: #c00000;">**Republican**</span> organizers in [+ bureau_target +] and [+ bureau_target2 +]. Trust is slow to build, but the network grows, and these connections will matter come election time.
 
 @soldiers
 subtitle: -[+ bureau_cost +] budget
@@ -145,6 +156,8 @@ on-arrival: {!
     Q.freedmen_turnout = Math.min(100, (Q.freedmen_turnout || 0) + 3);
     let s = Q.bureau_target;
     Q[s + "_freemen_rep"] = Math.min(100, (Q[s + "_freemen_rep"] || 0) + 2);
+    let s = Q.bureau_target2;
+    Q[s + "_freemen_rep"] = Math.min(100, (Q[s + "_freemen_rep"] || 0) + 2);
 !}
 
-A detachment of federal infantry takes up position around Bureau headquarters in [+ bureau_target +]. Night raids on Bureau offices drop sharply. With less violence in the air, agents report being able to move and register voters more freely at least for now.
+A detachment of federal infantry takes up position around Bureau headquarters in [+ bureau_target +] and [+ bureau_target2 +]. Night raids on Bureau offices drop sharply. With less violence in the air, agents report being able to move and register voters more freely at least for now.
