@@ -193,27 +193,64 @@ on-arrival: {!
     Q.SC_workers_rep = Math.min(100, Q.SC_workers_rep + 1);
     Q.freedmen_rep += 2;
     Q.radical_strength += 1;
+	Q.SC_gov = "rep";
 !}
 
-The Republican coalition — freedmen, Union men, and their allies — holds the statehouse. [+ SC_rep_seats +] of the legislature's 124 seats are held by Republicans, a clear working majority and a victory for Reconstruction and racial equality within the state.
+The <span style="color: #c00000;">**Republican**</span> coalition — freedmen, Union men, and their allies — holds the statehouse. [+ SC_rep_seats +] of the legislature's 124 seats are held by <span style="color: #c00000;">**Republicans**</span>, a clear working majority and a victory for Reconstruction and racial equality within the state.
 
 @SC_fusion_win
-title: Fusion Ticket Topples Republican Rule in South Carolina
+title: The Democrats win the election!
 view_if: SC_rep_seats < SC_dem_seats
 subtitle: [+ SC_dem_vote +]% to [+ SC_rep_vote +]%
 on-arrival: {!
-    Q.SC_freemen_rep = Math.max(0, Q.SC_freemen_rep - 8);
-    Q.SC_workers_rep = Math.max(0, Q.SC_workers_rep - 3);
-    Q.SC_middle_class_rep = Math.max(0, Q.SC_middle_class_rep - 3);
-    Q.SC_rural_rep = Math.max(0, Q.SC_rural_rep - 4);
     Q.freedmen_rep -= 3;
     Q.conservative_strength += 2;
     Q.kkk_strength += 3;
+	Q.SC_gov = "dem";
 !}
 
-A Conservative-Democratic fusion ticket has captured the legislature, promising to "redeem" South Carolina from Republican rule. [+ SC_dem_seats +] of 124 legislative seats are now in Democratic hands, in a major defeat for Reconstruction in the state.
+[? if SC_gov != "dem": A Conservative-<span style="color: #0015bc;">**Democratic**</span> fusion ticket has captured the legislature, promising to "redeem" South Carolina from Republican rule. [+ SC_dem_seats +] of 124 legislative seats are now in <span style="color: #0015bc;">**Democratic**</span> hands, in a major defeat for Reconstruction in the state. ?]
 
-(add an option if radical strength is high enough to send in the military and install a republican government anyways)
+[? if SC_gov = "dem": The <span style="color: #0015bc;">**Democratic**</span> majority has held on. They will continue their pro-redeemer, anti-Reconstruction policies, much to our dismay. ?]
+
+[? if SC_gov = "dem" and occupation = 2: Given that the <span style="color: #0015bc;">**Democratic**</span> victory in the election was almost certainly only the result of violent voter suppression, the <span style="color: #7A1F5C;">**Radicals**</span> have demanded that the federal government directly intervene to occupy the state and install a <span style="color: #c00000;">**Republican**</span> government. ?]
+
+ - @send_troops: Send in the military and dissolve this illegitimate government!
+ - @back_off: The risks are too high, we have no choice but to back off.
+
+
+@send_troops
+choose-if: radical_strength > (moderate_strength/3 + liberal_strength/2 + conservative_strength) and army_loyalty >= 0.7 
+subtitle: This will be controversial, to say the least.
+unavailable-subtitle: [? if radical_strength < (moderate_strength/3 + liberal_strength/2 + conservative_strength): The <span style="color: #7A1F5C;">**Radicals**</span> are not strong enough to convince the party. ?][? if army_loyalty < 0.7: The army is unwilling to do this. ?][? if judicial reform < 2: There is no chance this would survive in court. ?]
+on-arrival: {!
+	Q.SC_freemen_rep = Math.min(100, Q.SC_freemen_rep + 8);
+    Q.SC_workers_rep = Math.min(100, Q.SC_workers_rep + 1);
+    Q.freedmen_rep += 2;
+    Q.radical_strength += 1;
+	Q.SC_gov = "rep";
+	Q.SC_intervened = 1;
+	Q.conservative_dissent += 5;
+	Q.radical_dissent -= 5;
+	Q.radical_strength += 5;
+!}
+
+We've sent in the military to dissolve the <span style="color: #0015bc;">**Democratic**</span> state government! Federal troops occupy the statehouse and install a <span style="color: #c00000;">**Republican**</span> government as an unusual coalition of <span style="color: #0015bc;">**Democrats**</span>, <span style="color: #DAA520;">**Liberals**</span> and <span style="color: #B5651D;">**Conservatives**</span> alike decry our actions as an undemocratic abuse of federal power. 
+
+The freedmen, however, are quite grateful for our intervention.
+
+@back_off
+on-arrival {!
+	Q.SC_freemen_rep = Math.max(0, Q.SC_freemen_rep - 8);
+    Q.SC_workers_rep = Math.max(0, Q.SC_workers_rep - 3);
+    Q.SC_middle_class_rep = Math.max(0, Q.SC_middle_class_rep - 3);
+    Q.SC_rural_rep = Math.max(0, Q.SC_rural_rep - 4);
+	Q.radical_dissent += 5;
+	Q.conservative_dissent -= 5;
+!}
+
+We will not intervene. The <span style="color: #0015bc;">**Democratic**</span> government was elected by the people of South Carolina, and it will stand. The <span style="color: #B5651D;">**Conservatives**</span> breathe a sigh of relief as freedmen across the state fear for their future.
+	
 
 @SC_disputed
 title: South Carolina's Election Disputed
